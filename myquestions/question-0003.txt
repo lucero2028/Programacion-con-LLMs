@@ -1,0 +1,12 @@
+El Problema:
+Tienes datos de transporte con variables como distancia, tiempo y costo, pero contienen outliers y variables poco informativas.
+
+Tu Misión:
+Escribe una función llamada procesar_datos_transporte(df, target_col) que:
+
+Elimine outliers usando el método de rango intercuartílico (IQR).
+Cree una nueva variable: costo_por_km.
+Normalice las variables numéricas con MinMaxScaler.
+Calcule la correlación con la variable objetivo.
+Seleccione solo variables con correlación absoluta mayor a 0.3.
+Devuelva el DataFrame final.
