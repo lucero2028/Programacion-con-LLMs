@@ -1,0 +1,13 @@
+El Problema:
+En un sistema de transporte o logística, necesitas detectar registros anómalos (por ejemplo, costos excesivos o tiempos inusuales) que podrían indicar errores, fraudes o eventos atípicos.
+
+Tu Misión:
+Escribe una función llamada detectar_anomalias_isolation_forest(X, contamination=0.1) que:
+
+Reciba una matriz de características X
+Escale los datos usando StandardScaler
+Entrene un modelo IsolationForest
+Prediga qué registros son anomalías
+Devuelva:
+Un array con las etiquetas (1 normal, -1 anomalía)
+El número total de anomalías detectadas
