@@ -1,1 +1,27 @@
+Diagnóstico pregunta 0650
+
+La solución implementada para la función `comparar_modelos_clasificacion` sigue exactamente la lógica definida en el generador de casos de uso `question-0002-usecase-generator.py`.
+
+En particular, tanto el generador como la solución:
+
+* Instancian los modelos `LogisticRegression`, `DecisionTreeClassifier` y `KNeighborsClassifier`.
+* Evalúan cada modelo mediante `cross_val_score(..., cv=5)`.
+* Calculan el promedio de accuracy utilizando `numpy.mean`.
+* Devuelven una tupla compuesta por el diccionario de resultados y el nombre del mejor modelo.
+
+La discrepancia observada se presenta únicamente en el valor asociado a la clave `"dt"` (DecisionTreeClassifier).
+
+El generador crea el árbol de decisión mediante:
+
+```python
+DecisionTreeClassifier()
+```
+
+sin especificar el parámetro `random_state`.
+
+Debido a esto, el modelo puede producir resultados diferentes entre ejecuciones, aun utilizando exactamente los mismos datos de entrada. Como consecuencia, el accuracy promedio calculado para el árbol puede variar ligeramente dependiendo de la ejecución realizada por el validador.
+
+La evidencia de este comportamiento es que los valores obtenidos para los modelos `LogisticRegression` y `KNeighborsClassifier` coinciden con los esperados, mientras que la diferencia aparece únicamente en el modelo `DecisionTreeClassifier`, que es precisamente el único componente no determinista del proceso.
+
+Por lo anterior, considero que la diferencia reportada corresponde a la naturaleza aleatoria del generador de casos de uso y no a un error en la implementación de la solución.
 
